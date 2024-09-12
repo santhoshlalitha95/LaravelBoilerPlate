@@ -1,0 +1,19 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: max
+    paths:
+        - app
+        - database
+        - routes
+    excludePaths:
+        - '*/storage/*'
+        - '*/bootstrap/cache/*'
+        - '*/vendor/*'
+        - '*/routes/console.php'
+        - '*/database/migrations/2018_08_08_100000_create_telescope_entries_table.php'
+        - '*/app/Http/Controllers/ProductController.php'
+    bootstrapFiles:
+        - vendor/autoload.php
+    ignoreErrors:

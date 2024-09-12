@@ -1,0 +1,497 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Unit Testing",
+        "description": "A description of your API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/user/register": {
+            "post": {
+                "summary": "Register a user",
+                "operationId": "c5d4be2455cfdca65ec102b1804ada91",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "rohit sharma"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "rohitt@abcd.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "1234$@12"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "1234$@12"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User successfully registered"
+                                        },
+                                        "user": {
+                                            "type": "object",
+                                            "example": {
+                                                "name": "rohit sharma",
+                                                "email": "rohitt@abcd.com"
+                                            }
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "ewetewdsgdsgsdgdsgdsgdsgdsgdsgdgdzrwehqwoicbarwfawnaoivaejkbaebaeboeaslkvsklcnsd"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/user/login": {
+            "post": {
+                "summary": "Login user",
+                "operationId": "fa481c4ebcab70051c9df8d0624a47e8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "rohitt@abcd.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "1234$@12"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User successfully login"
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "ewetewdsgdsgsdgdsgdsgdsgdsgdsgdgdzrwehqwoicbarwfawnaoivaejkbaebaeboeaslkvsklcnsd"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/todo-list/{todo_list_id}/task": {
+            "get": {
+                "summary": "Get tasks of a todo lists ",
+                "operationId": "38d7efd65e7c460776d47733aead1113",
+                "parameters": [
+                    {
+                        "name": "todo_list_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Store a new todo list task",
+                "operationId": "8182f532a7a9899e6bfce214d87c5489",
+                "parameters": [
+                    {
+                        "name": "todo_list_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "task_name": {
+                                        "type": "string",
+                                        "example": "My New Todo List Task"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "task_name": {
+                                            "type": "string",
+                                            "example": "My New Todo List"
+                                        },
+                                        "todo_list_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/task/{task_id}": {
+            "put": {
+                "summary": "Update task",
+                "operationId": "65c6ff5bd6ee2fde80d9fe3c03e87d5b",
+                "parameters": [
+                    {
+                        "name": "task_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "task_name": {
+                                        "type": "string",
+                                        "example": "Updated Task"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "task_name": {
+                                            "type": "string",
+                                            "example": "Updated Task"
+                                        },
+                                        "todo_list_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a task",
+                "operationId": "0a5c47c30e704e0dfe64e12fa11f6634",
+                "parameters": [
+                    {
+                        "name": "task_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successfully deleted"
+                    },
+                    "404": {
+                        "description": "Task not found"
+                    }
+                }
+            }
+        },
+        "/api/todo-list": {
+            "get": {
+                "summary": "Get all todo lists",
+                "operationId": "68e7f0f5c72d81436c43910c9688916b",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Store a new todo list",
+                "operationId": "2e62dc0cc2e010ca537786f4dff2e69c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "My New Todo List"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Description of the new todo list"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfully created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "My New Todo List"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Description of the new todo list"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/todo-list/{id}": {
+            "get": {
+                "summary": "Get a single todo list",
+                "operationId": "be68cfffe1450eecbd74a54a81c87c5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "My Todo List"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Description of the todo list"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Todo list not found"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update an existing todo list",
+                "operationId": "918e1b03364f58c5c015192cb8a76cc6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Updated Todo List Title"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Updated description of the todo list"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Updated Todo List Title"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "Updated description of the todo list"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Todo list not found"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a todo list",
+                "operationId": "28b2e19b52abbd5702d2d73f28101105",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successfully deleted"
+                    },
+                    "404": {
+                        "description": "Todo list not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
